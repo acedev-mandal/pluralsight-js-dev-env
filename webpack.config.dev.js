@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
     mode: 'development',
@@ -17,6 +18,11 @@ export default {
         new webpack.LoaderOptionsPlugin({
             debug: true,
             noInfo: false,
+        }),
+        // Create HTML file that includes reference to bundled J
+        new HtmlWebpackPlugin({
+            template: 'src/index.html',
+            inject: true
         })
     ],
     module: {
