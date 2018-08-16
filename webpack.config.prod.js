@@ -5,7 +5,6 @@ import WebpackMd5Hash from 'webpack-md5-hash';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-// import ExtractTextPlugin from 'extract-text-webpack-plugin'; // extract-text-webpack-plugin doesn't work with webpack 4 above
 
 export default {
     mode: 'production',
@@ -45,7 +44,6 @@ export default {
     },
     plugins: [
         // Generate an external css file with a hash in the filename
-        // new ExtractTextPlugin('[name].[contenthash].css'), // extract-text-webpack-plugin doesn't work with webpack 4 above
         new MiniCssExtractPlugin({
             filename: "[name].[hash].css"
         }),
@@ -85,7 +83,6 @@ export default {
     module: {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
-            // { test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap') } // extract-text-webpack-plugin doesn't work with webpack 4 above
             { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] }
         ]
     }
